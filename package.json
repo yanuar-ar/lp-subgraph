@@ -2,6 +2,7 @@
   "name": "lp-subgraph",
   "license": "MIT",
   "scripts": {
+    "graph-node": "docker-compose up",
     "codegen": "graph codegen",
     "build": "graph build",
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ yanuar-ar/lp-subgraph",
