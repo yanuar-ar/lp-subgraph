@@ -1,0 +1,49 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: TheLP
+    network: mainnet
+    source:
+      address: "0x38930Aae699c4cD99D1D794dF9dB41111B13092B"
+      abi: TheLP
+      startBlock: 15862908
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - ConsecutiveTransfer
+        - OwnershipTransferred
+        - PaymentReceived
+        - PaymentReleased
+        - Transfer
+        - Buy
+        - Sell
+      abis:
+        - name: TheLP
+          file: ./abis/TheLP.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: ConsecutiveTransfer(indexed uint256,uint256,indexed address,indexed address)
+          handler: handleConsecutiveTransfer
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: PaymentReceived(address,uint256)
+          handler: handlePaymentReceived
+        - event: PaymentReleased(address,uint256)
+          handler: handlePaymentReleased
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      callHandlers:
+        - function: buy(uint256)
+          handler: handleBuy
+        - function: sell(uint256)
+          handler: handleSell
+      file: ./src/the-lp.ts
