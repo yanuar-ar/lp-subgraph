@@ -72,6 +72,7 @@ type Buy @entity(immutable: true) {
   id: Bytes!
   from: Bytes! # address
   tokenId: BigInt!
+  value: BigInt!
   blockNumber: BigInt!
   blockTimestamp: BigInt!
 }
@@ -80,6 +81,7 @@ type Sell @entity(immutable: true) {
   id: Bytes!
   from: Bytes! # address
   tokenId: BigInt!
+  value: BigInt!
   blockNumber: BigInt!
   blockTimestamp: BigInt!
 }

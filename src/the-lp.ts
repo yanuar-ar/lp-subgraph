@@ -135,6 +135,7 @@ export function handleSell(call: SellCall): void {
 
   entity.from = call.transaction.from;
   entity.tokenId = call.inputs.tokenId;
+  entity.value = call.transaction.value;
   entity.blockNumber = call.block.number;
   entity.blockTimestamp = call.block.timestamp;
 
@@ -146,6 +147,7 @@ export function handleBuy(call: BuyCall): void {
 
   entity.from = call.transaction.from;
   entity.tokenId = call.inputs.id;
+  entity.value = call.transaction.value;
   entity.blockNumber = call.block.number;
   entity.blockTimestamp = call.block.timestamp;
 
